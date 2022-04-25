@@ -1,3 +1,4 @@
+import Model.IStatisticsModel;
 import Model.StatisticsModel;
 
 /**
@@ -12,9 +13,7 @@ public class Main {
    * @param args the Arguments provided by the terminal
    */
   public static void main(String[] args) {
-    Readable rd = null;
-    Appendable ap = System.out;
-    StatisticsModel model = new StatisticsModel("test.csv", "expected.csv");
+    IStatisticsModel model = new StatisticsModel("CSVFiles/test.csv", "CSVFiles/expected.csv");
     IView view = new StatisticsView();
     Controller controller = new Controller(model, view);
     controller.control();

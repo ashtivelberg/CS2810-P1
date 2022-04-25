@@ -1,13 +1,14 @@
+import Model.IStatisticsModel;
 import Model.StatisticsModel;
 import Model.Utils;
 import java.io.IOException;
 
 public class Controller implements Features {
 
-  private final StatisticsModel model;
+  private final IStatisticsModel model;
   private final IView view;
 
-  public Controller(StatisticsModel model, IView view) {
+  public Controller(IStatisticsModel model, IView view) {
     this.model = Utils.nullCheck(model);
     this.view = view;
     view.addFeatures(this);
@@ -19,12 +20,18 @@ public class Controller implements Features {
 
   @Override
   public double poissionDistribution(String input) {
-      Utils.nullCheck(input);
-      String[] parts = input.split(" ");
-      if (parts.length != 3) {
-        throw new IllegalArgumentException("Invalid Number of Args");
-      }
-      return this.model.findPoissonDistribution(parts[0], parts[1], Integer.parseInt(parts[2]));
+    Utils.nullCheck(input);
+    String[] parts = input.split(" ");
+    if (parts.length != 3) {
+      throw new IllegalArgumentException("Invalid Number of Args");
+    }
+    double ret = 0.0;
+    try {
+      ret = this.model.findPoissonDistribution(parts[0], parts[1], Integer.parseInt(parts[2]));
+    } catch (Exception e) {
+      write(e.getMessage());
+    }
+    return ret;
   }
 
   @Override
@@ -36,7 +43,13 @@ public class Controller implements Features {
   @Override
   public double variance(String input) {
     Utils.nullCheck(input);
-    return this.model.findVariance(input);
+    double ret = 0.0;
+    try {
+      ret = this.model.findVariance(input);
+    } catch (Exception e) {
+      write(e.getMessage());
+    }
+    return ret;
   }
 
   /**

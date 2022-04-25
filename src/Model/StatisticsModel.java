@@ -2,9 +2,8 @@ package Model;
 
 import Model.Expected.ExpectedTable;
 import Model.Poisson.PoissonTable;
-import java.text.ParseException;
 
-public class StatisticsModel {
+public class StatisticsModel implements IStatisticsModel{
 
   PoissonTable poissonTable;
   ExpectedTable expectedTable;
@@ -14,14 +13,17 @@ public class StatisticsModel {
     this.expectedTable = new ExpectedTable(expectedTablePath);
   }
 
+  @Override
   public double findPoissonDistribution(String startTime, String endTime, int k) {
     return this.poissonTable.poissionDistribution(startTime, endTime, k);
   }
 
+  @Override
   public double findExpectedValue(String line) {
     return this.expectedTable.expectedValue(line);
   }
 
+  @Override
   public double findVariance(String line) {
     return this.expectedTable.variance(line);
   }

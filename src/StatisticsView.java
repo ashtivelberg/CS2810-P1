@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +21,6 @@ public class StatisticsView extends JFrame implements IView {
   private final JButton poissonDistribution;
   private final JButton expectedValue;
   private final JButton variance;
-  private final JButton loadButton;
   private final JButton quitButton;
   private final JTextField input;
   private final JLabel programOutput;
@@ -45,10 +45,6 @@ public class StatisticsView extends JFrame implements IView {
     input = new JTextField(15);
     buttonPanel.add(input);
 
-    // Load Button
-    loadButton = new JButton("Load");
-    buttonPanel.add(loadButton);
-
     // Poisson Distribution Button
     poissonDistribution = new JButton("Poisson Distribution");
     buttonPanel.add(poissonDistribution);
@@ -65,6 +61,9 @@ public class StatisticsView extends JFrame implements IView {
     quitButton = new JButton("Quit");
     buttonPanel.add(quitButton);
 
+    this.pack();
+    this.repaint();
+
     //dialog boxes
     JPanel dialogBoxesPanel = new JPanel();
     dialogBoxesPanel.setBorder(BorderFactory.createTitledBorder("Dialog boxes"));
@@ -77,7 +76,7 @@ public class StatisticsView extends JFrame implements IView {
     dialogBoxesPanel.add(messageDialogPanel);
 
     // Placing Output
-    programOutput = new JLabel();
+    programOutput = new JLabel("", JLabel.CENTER);
     this.add(programOutput, BorderLayout.CENTER);
 
     this.pack();
@@ -100,7 +99,8 @@ public class StatisticsView extends JFrame implements IView {
     poissonDistribution.addActionListener(evt -> {
       if (input.getText().length() != 0) {
         this.updateOutput(String.valueOf(features.poissionDistribution(input.getText())));
-        this.resetFocus();
+        this.pack();
+        this.repaint();
       }
       this.clearInputString();
     });
@@ -109,7 +109,8 @@ public class StatisticsView extends JFrame implements IView {
     expectedValue.addActionListener(evt -> {
       if (input.getText().length() != 0) {
         this.updateOutput(String.valueOf(features.expectedValue(input.getText())));
-        this.resetFocus();
+        this.pack();
+        this.repaint();
       }
       this.clearInputString();
     });
@@ -118,7 +119,8 @@ public class StatisticsView extends JFrame implements IView {
     variance.addActionListener(evt -> {
       if (input.getText().length() != 0) {
         this.updateOutput(String.valueOf(features.variance(input.getText())));
-        this.resetFocus();
+        this.pack();
+        this.repaint();
       }
       this.clearInputString();
     });
@@ -144,11 +146,11 @@ public class StatisticsView extends JFrame implements IView {
 
   @Override
   public void updateOutput(String text) {
-   if (text == null) {
-     programOutput.setText(" ");
-   } else {
-     programOutput.setText(text);
-   }
-   programOutput.repaint();
+    if (text == null) {
+      programOutput.setText(" ");
+    } else {
+      programOutput.setText(text);
+    }
+    programOutput.repaint();
   }
 }
