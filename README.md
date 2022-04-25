@@ -25,8 +25,10 @@ where the first HH is the start time and the second HH is the end time. Computin
 requires the formula:
 ![](Pictures/unnamed.png)  
 Where lambda is the average number of events given our data, _e_ is Euler's number and k is the number
-of occurrences. What this Poisson Distribution calculates is the probability that you exprience k delays
-between the provided start and end times given the data observed.
+of occurrences. What this Poisson Distribution calculates is the probability that you experience k delays
+between the provided start and end times given the data observed. We recommend the MBTA continues collecting
+data regarding train delays and information because the Law of Large Numbers states that a probability
+is more likely to accurately model reality the more data you have.
 
 
 ### Expected Value & Variance
