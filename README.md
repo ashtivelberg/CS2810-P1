@@ -37,8 +37,27 @@ was in fact that long. Written out in a table, the format follows:
 In this table, the topmost row stores the line names for the MBTA where there are currently the Orange,
 Red, Green, and Blue lines. The line names start in the second column. In the first column, and starting
 from the second row, probabilities for a given wait time are listed. Computing the Expected Value and Variance
-requires the following formulas:
+requires the following formulas:  
 ![](Pictures/exp.png)  
 ![](Pictures/var.png)  
+
+### Usage
+To run the program, first you need to download the files submitted. Once downloaded, launch your 
+terminal, change your current working directory to be wherever all these files are located. One in 
+the directory, type "java -jar run/Statistics\ Calculator.jar CSVFiles/test.csv CSVFiles/expected.csv"
+and the program will launch.
+
+Using the tool is simple. In the text box, type your input and click the appropriate buttons. The tool
+has two tables in use, one for Poisson's Distribution and one for Expected Value/Variance. For Poisson's distribution,
+type an input in the format of "HH HH k" where the first HH is the starting time you want to use,
+the second HH is the ending time you want to use, and k is the number of occurrences you want to calculate.
+For Expected Value and Variance, type any line color (Orange, Red, Blue, Green) where the first letter
+is capitalized, and the rest is lower case.
+
+If you desire to use your own tables, assuming they follow the proper format (mentioned earlier) you are
+welcome to download the .csv file into the CSVFiles folder of this project. Regardless of where the two
+.csv files are downloaded, you would want to launch the program with the command "java -jar run/Statistics\ Calculator.jar arg1 arg2"
+where arg1 and arg2 are the paths to the two .csv files. The file given for arg1 MUST be the table modelling Poisson's Distribution
+and the file given for arg2 the table modelling Expected Value.
 
 

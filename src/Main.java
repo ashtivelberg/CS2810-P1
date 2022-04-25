@@ -13,7 +13,10 @@ public class Main {
    * @param args the Arguments provided by the terminal
    */
   public static void main(String[] args) {
-    IStatisticsModel model = new StatisticsModel("CSVFiles/test.csv", "CSVFiles/expected.csv");
+    if (args.length != 2) {
+      throw new IllegalArgumentException("Invalid Number of Args Given");
+    }
+    IStatisticsModel model = new StatisticsModel(args[0], args[1]);
     IView view = new StatisticsView();
     Controller controller = new Controller(model, view);
     controller.control();
