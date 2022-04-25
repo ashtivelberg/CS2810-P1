@@ -1,12 +1,13 @@
 package Model.Expected;
 
-import Model.GenericTable.Table;
+import Model.GenericTable.GenericTable;
+import Model.GenericTable.ITable;
 import Model.GenericTable.TableCell;
 import Model.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpectedTable {
+public class ExpectedTable implements ITable {
 
   private final List<ExpectedCell> table;
 
@@ -17,11 +18,11 @@ public class ExpectedTable {
 
   private static List<ExpectedCell> makeExpectedTable(String filename) {
     List<ExpectedCell> table = new ArrayList<ExpectedCell>();
-    Table generic = new Table(filename);
+    ITable generic = new GenericTable(filename);
     List<TableCell> genericTableList = generic.getTable();
     for (int i = 0; i < genericTableList.size(); i++) {
       TableCell t = genericTableList.get(i);
-      table.add(new ExpectedCell(t.getLine(), Double.parseDouble(t.getIndex()), t.getVal()));
+      table.add(new ExpectedCell(t.getLine(), t.getIndex(), t.getVal()));
     }
     return table;
   }
@@ -31,7 +32,7 @@ public class ExpectedTable {
     double expectedValue = 0;
     for (ExpectedCell tb : this.table) {
       if (tb.getLine().equals(line)) {
-        expectedValue += tb.getVal() * tb.getProbability();
+        expectedValue += tb.getVal() * Double.parseDouble(tb.getIndex());
       }
     }
     return expectedValue;
@@ -42,9 +43,14 @@ public class ExpectedTable {
     double expectedValue = 0;
     for (ExpectedCell tb : this.table) {
       if (tb.getLine().equals(line)) {
-        expectedValue += Math.pow(tb.getVal(), 2) * tb.getProbability();
+        expectedValue += Math.pow(tb.getVal(), 2) * Double.parseDouble(tb.getIndex());
       }
     }
     return expectedValue;
+  }
+
+  @Override
+  public List<TableCell> getTable() {
+    return this.getTable();
   }
 }

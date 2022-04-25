@@ -19,12 +19,12 @@ public class Controller implements Features {
 
   @Override
   public double poissionDistribution(String input) {
-      Utils.nullCheck(input);
-      String[] parts = input.split(" ");
-      if (parts.length != 3) {
-        throw new IllegalArgumentException("Invalid Number of Args");
-      }
-      return this.model.findPoissonDistribution(parts[0], parts[1], Integer.parseInt(parts[2]));
+    Utils.nullCheck(input);
+    String[] parts = input.split(" ");
+    if (parts.length != 3) {
+      throw new IllegalArgumentException("Invalid Number of Args");
+    }
+    return this.model.findPoissonDistribution(parts[0], parts[1], Integer.parseInt(parts[2]));
   }
 
   @Override

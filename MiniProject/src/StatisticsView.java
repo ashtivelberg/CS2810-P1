@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +24,11 @@ public class StatisticsView extends JFrame implements IView {
   private final JButton quitButton;
   private final JTextField input;
   private final JLabel programOutput;
+//  private final ImageIcon pExample;
+//  private final JLabel pLabel;
+//  private final ImageIcon eExample;
+//  private final JLabel eLabel;
+
 
   /**
    * Allows for a GUI viewer to be constructed with all its buttons and whatnot.
@@ -59,6 +65,18 @@ public class StatisticsView extends JFrame implements IView {
     //Quit Button
     quitButton = new JButton("Quit");
     buttonPanel.add(quitButton);
+
+//    pExample = new ImageIcon("p_table.png");
+//    eExample = new ImageIcon("ev_table.png");
+//
+//    pLabel = new JLabel("Example", JLabel.LEFT);
+//    eLabel = new JLabel("Example", JLabel.RIGHT);
+//
+//    pLabel.setIcon(pExample);
+//    eLabel.setIcon(eExample);
+
+    this.pack();
+    this.repaint();
 
     //dialog boxes
     JPanel dialogBoxesPanel = new JPanel();
@@ -142,11 +160,11 @@ public class StatisticsView extends JFrame implements IView {
 
   @Override
   public void updateOutput(String text) {
-   if (text == null) {
-     programOutput.setText(" ");
-   } else {
-     programOutput.setText(text);
-   }
-   programOutput.repaint();
+    if (text == null) {
+      programOutput.setText(" ");
+    } else {
+      programOutput.setText(text);
+    }
+    programOutput.repaint();
   }
 }

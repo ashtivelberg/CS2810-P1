@@ -2,7 +2,6 @@ package Model;
 
 import Model.Expected.ExpectedTable;
 import Model.Poisson.PoissonTable;
-import java.text.ParseException;
 
 public class StatisticsModel {
 

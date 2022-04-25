@@ -1,18 +1,20 @@
 package Model.Expected;
 
-public class ExpectedCell {
+import Model.GenericTable.ITableCell;
+
+public class ExpectedCell implements ITableCell {
 
   private final String line;
   private final int value;
-  private double probability;
+  private final String probability;
 
-  ExpectedCell(String line, double probability, int value) {
+  ExpectedCell(String line, String probability, int value) {
     this.line = line;
     this.probability = probability;
     this.value = value;
   }
 
-  public double getProbability() {
+  public String getIndex() {
     return this.probability;
   }
 

@@ -1,6 +1,6 @@
 package Model.GenericTable;
 
-public class TableCell {
+public class TableCell implements ITableCell {
 
   private final String line;
   private final String index;
